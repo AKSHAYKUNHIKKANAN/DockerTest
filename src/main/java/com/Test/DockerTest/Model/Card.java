@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class Card {
-    public String longNum;
-    public String expires;
-    public String ccv;
-    public String userID;
+    private String longNum;
+    private String expires;
+    private String ccv;
+    private String userID;
 
 }
