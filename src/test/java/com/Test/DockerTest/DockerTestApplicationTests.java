@@ -73,12 +73,12 @@ class DockerTestApplicationTests {
 		card.setCcv("123");
 		card.setUserID("65518ecfee11cb0001b25970");
 
-		// Perform the POST request and validate the response
+
 		mockMvc.perform(post("/postCards")
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(objectMapper.writeValueAsString(card)))
 				.andExpect(MockMvcResultMatchers.status().isOk());
-		// Add more assertions based on the expected behavior and response
+
 	}
 	@Test
 	void testPostCardA() throws Exception {
@@ -89,16 +89,16 @@ class DockerTestApplicationTests {
 		card.setCcv("123");
 		card.setUserID("65518ecfee11cb0001b25970");
 
-		// Perform the POST request and validate the response
+
 		mockMvc.perform(post("/postCards")
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(objectMapper.writeValueAsString(card)))
 				.andExpect(MockMvcResultMatchers.status().isOk());
-		// Add more assertions based on the expected behavior and response
+
 	}
 	@Test
 	void testAddress() throws Exception {
-		// Create a sample Card object
+
 		Address address = new Address();
 		address.setStreet("Sample Street");
 		address.setNumber("123");
@@ -107,7 +107,7 @@ class DockerTestApplicationTests {
 		address.setPostcode("12345");
 		address.setUserid("65518ecfee11cb0001b25970");
 
-		// Perform the POST request and validate the response
+
 		ResultActions postResult =  mockMvc.perform(post("/address")
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(objectMapper.writeValueAsString(address)))
@@ -116,12 +116,12 @@ class DockerTestApplicationTests {
 		String id = jsonParser(postResult.andReturn().getResponse().getContentAsString());
 		System.out.println(id);
 
-// Now use the response content to construct the GET request
+
 		mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8009/getAddress")
 						.param("id", id))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 
-		// Add more assertions based on the expected behavior and response
+
 	}
 
 	public String jsonParser(String jsonString) {

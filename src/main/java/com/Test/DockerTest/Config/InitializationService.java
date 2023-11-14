@@ -23,7 +23,7 @@ public class InitializationService {
     private DockerTestService dockerTestService;
 
     @PostConstruct
-    // 60 seconds delay
+
     public void init() {
         try {
             System.out.println("Inside the test");
@@ -157,11 +157,11 @@ public class InitializationService {
             int responseCode = connection.getResponseCode();
             return responseCode == HttpURLConnection.HTTP_OK;
         } catch (IOException e) {
-            // Handle exceptions, e.g., connection errors
+
             e.printStackTrace();
             return false;
         }
     }
 
-    // Additional methods...
+
 }
