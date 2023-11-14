@@ -50,7 +50,7 @@ public class DockerTestImpl implements DockerTestService {
         user.setEmail(email);
         user.setPassword(password);
         user.setUsername(userName);
-
+System.out.println(userName+" "+password+" "+email);
         HttpEntity<User> requestEntity = new HttpEntity<>(user, headers);
 
         String url = "http://edge-router/register";
@@ -150,7 +150,7 @@ public class DockerTestImpl implements DockerTestService {
                     String.class
             );
 
-            System.out.println("Response: " + responseEntity.getBody());
+            System.out.println("Response card: " + responseEntity.getBody());
             return responseEntity.getBody();
         } catch (HttpServerErrorException e) {
             System.err.println("Error Response: " + e.getResponseBodyAsString());
@@ -160,6 +160,9 @@ public class DockerTestImpl implements DockerTestService {
             throw new RuntimeException("Unexpected error during POST request", e);
         }
     }
+
+
+
 
     @Override
     public String postAddress(Address address) {
@@ -216,7 +219,6 @@ public class DockerTestImpl implements DockerTestService {
 
 
             int responseCode = connection.getResponseCode();
-            System.out.println("Response Code: " + responseCode);
             StringBuilder response = new StringBuilder();
 
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
